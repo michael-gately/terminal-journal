@@ -5,7 +5,8 @@ from rest_framework import serializers
 class EntrySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Entry
-        fields = ['title', 'caption', 'created_date']
+        fields = ['id', 'title', 'caption', 'created_date']
+        read_only_fields = ['create_date']
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

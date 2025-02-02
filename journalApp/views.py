@@ -14,10 +14,9 @@ class EntryViewSet(viewsets.ModelViewSet):
     queryset = Entry.objects.all().order_by('-created_date')
     serializer_class = EntrySerializer
     permission_classes = [permissions.IsAuthenticated]
-
-@api_view(['POST'])
-def create_entry(request):
-    entry = EntrySerializer(data=request.data)
+    
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
     
 
 class UserViewSet(viewsets.ModelViewSet):
