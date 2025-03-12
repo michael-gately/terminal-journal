@@ -20,12 +20,17 @@ from rest_framework import routers
 from journalApp import views
 
 router = routers.DefaultRouter()
-router.register(r'entries', views.EntryViewSet)
+# router.register(r'entries', views.EntryViewSet)
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('entries/', views.entry_list, name='entry_list'),
+    path('entries/new/', views.entry_create, name='entry_create'),
+    path('entries/<int:pk>/', views.entry_detail, name='entry_detail'),
+    path('entries/<int:pk>/edit/', views.entry_update, name='entry_update'),
+    path('entries/<int:pk>/delete/', views.entry_delete, name='entry_delete'),
 ]

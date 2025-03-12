@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">{{ entry.title }}</h2>
+        <p class="text-muted">Created: {{ entry.created_date|date:"M d, Y H:i" }}</p>
+        <p class="card-text">{{ entry.author }}</p>
+        <p class="card-text">{{ entry.caption }}</p>
+        
+        <div class="mt-4">
+            <a href="{% url 'entry_update' entry.id %}" class="btn btn-secondary">Edit</a>
+            <a href="{% url 'entry_delete' entry.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
