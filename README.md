@@ -1,1 +1,1 @@
-An API using Django Rest Framework to perform CRUD operations for a journal app.
+A simple Django app using CRUD operations to save a Journal.
